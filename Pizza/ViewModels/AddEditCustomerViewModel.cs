@@ -14,7 +14,7 @@ namespace Pizza.ViewModels
         public AddEditCustomerViewModel()
         {
             _repository = new CustomerRepository();
-            SaveCommand = ????;
+            //SaveCommand = ????;
             CancelCommand = new RelayCommand(OnCancel));
         }
         private bool _isEditeMode;
