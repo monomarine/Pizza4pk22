@@ -7,6 +7,29 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Customer Edit" HorizontalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
+            <TextBlock Text="First Name:" Width="100" VerticalAlignment="Center"/>
+            <TextBlock Text="Last Name:" Width="100" VerticalAlignment="Center"/>
+            <TextBlock Text="Email:" Width="100" VerticalAlignment="Center"/>
+            <TextBlock Text="Phone:" Width="100" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <TextBox Text="{Binding Customer.FirstName, UpdateSourceTrigger=PropertyChanged}" Width="400"/>
+            <TextBox Text="{Binding Customer.LastName, UpdateSourceTrigger=PropertyChanged}" Width="400"/>
+            <TextBox Text="{Binding Customer.Email, UpdateSourceTrigger=PropertyChanged}" Width="400"/>
+            <TextBox Text="{Binding Customer.Phone, UpdateSourceTrigger=PropertyChanged}" Width="400"/>
+        </StackPanel>
+        <Button Grid.Row="2" Grid.Column="0" Content="Save" Command="{Binding SaveCommand}" IsEnabled="{Binding SaveCommand.CanExecute}" Width="100" Margin="0,0,10,0"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Cancel" Command="{Binding CancelCommand}" Width="100"/>
     </Grid>
 </UserControl>
