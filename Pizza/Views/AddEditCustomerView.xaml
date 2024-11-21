@@ -7,6 +7,24 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+             <StackPanel Margin="25">
+                        <TextBlock Text="Фамилия" FontWeight="Bold"/>
+                        <TextBox Text="{Binding Customer.FirstName, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <TextBlock Text="Имя" FontWeight="Bold"/>
+                        <TextBox Text="{Binding Customer.LastName, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <TextBlock Text="E-mail" FontWeight="Bold"/>
+                        <TextBox Text="{Binding Customer.Email, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <TextBlock Text="Телефон:" FontWeight="Bold"/>
+                        <TextBox Text="{Binding Customer.Phone, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <Button Content="Сохранить" Command="{Binding SaveCommand}" Width="80" Margin="5"/>
+                            <Button Content="Отмена" Command="{Binding CancelCommand}" Width="80" Margin="5" Click="Button_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+
     </Grid>
 </UserControl>
