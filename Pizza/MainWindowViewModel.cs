@@ -50,17 +50,17 @@ namespace Pizza
         //открывать окно для редактирования клиента
         private void NavigationToEditCustomer(Customer customer)
         {
-            _addEditCustomerVewModel.IsEditeMode = true; 
-            _addEditCustomerVewModel.SetCustomer(customer);
-            CurrentViewModel = _customerListViewModel;
+            _addEditCustomerVewModel.IsEditeMode = true;
+            //_addEditCustomerVewModel.SetCustomer(customer);
+            //CurrentViewModel = _customerListViewModel;
         }
 
         //открывать окно для добавления клиента
         private void NavigationToAddCustomer(Customer customer)
         {
-            _addEditCustomerVewModel.IsEditeMode = false;
-            _addEditCustomerVewModel.SetCustomer(customer);
-            CurrentViewModel = _customerListViewModel;
+            //_addEditCustomerVewModel.IsEditeMode = false;
+            //_addEditCustomerVewModel.SetCustomer(customer);
+            //CurrentViewModel = _customerListViewModel;
         }
 
         //окно для оформления заказа

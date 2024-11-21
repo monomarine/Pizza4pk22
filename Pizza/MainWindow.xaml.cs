@@ -23,5 +23,7 @@ namespace Pizza
             InitializeComponent();
             MessageBox.Show(cont.Database.CanConnect().ToString());
         }
+
+    
     }
 }

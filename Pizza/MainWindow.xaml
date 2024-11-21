@@ -42,8 +42,8 @@
 
             <Button Content="клиенты"
                     Command="{Binding NavigationCommand}"
-                    CommandParameter="customers"/>
-            
+                    CommandParameter="customers" />
+
             <Button Content="оформить заказ"
                     Command="{Binding NavigationCommand}"
                     CommandParameter="orderPrep"
