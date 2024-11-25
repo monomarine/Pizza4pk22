@@ -7,7 +7,7 @@ using Pizza.Models;
 
 namespace Pizza.Services
 {
-    internal interface ICustomerRepository
+    public interface ICustomerRepository
     {
         //получать список всех пользователей
         Task<List<Customer>> GetCustomersAsync();

@@ -4,9 +4,111 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Pizza.Views"
+             xmlns:converter="clr-namespace:Pizza.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <converter:ValueToVisibilityConverter x:Key="VisConverter"/>
+        <converter:ValueToVisibilityConverter x:Key="NegVisConverter" Negate="True"/>
+
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Name="CustomerGrid" Grid.Row="0"
+              DataContext="{Binding Customer}"
+              Margin="5"
+              HorizontalAlignment="Center"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--имя-->
+            <TextBlock Text="Имя:" 
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="3"/>
+            <TextBox Text="{Binding FirstName, ValidatesOnNotifyDataErrors=True}"
+                     Grid.Row="0"
+                     Grid.Column="1"
+                     MinWidth="200"
+                     Margin="3"/>
+
+
+            <!--фамилия-->
+            <TextBlock Text="Фамилия:" 
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="3"/>
+            <TextBox Text="{Binding LastName, ValidatesOnNotifyDataErrors=True}"
+                     Grid.Row="1"
+                     Grid.Column="1"
+                     MinWidth="200"
+                     Margin="3"/>
+
+            <!--телефон-->
+            <TextBlock Text="Телефон:" 
+                       Grid.Row="2"
+                       Grid.Column="0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="3"/>
+            <TextBox Text="{Binding Phone, ValidatesOnNotifyDataErrors=True}"
+                     Grid.Row="2"
+                     Grid.Column="1"
+                     MinWidth="200"
+                     Margin="3"/>
+
+            <!--почта-->
+            <TextBlock Text="Почта:" 
+                       Grid.Row="3"
+                       Grid.Column="0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="3"/>
+            <TextBox Text="{Binding Email, ValidatesOnNotifyDataErrors=True}"
+                     Grid.Row="3"
+                     Grid.Column="1"
+                     MinWidth="200"
+                     Margin="3"/>
+        </Grid>
+
+        <Grid Name="CommandButtonsGrid" Grid.Row="1"
+              Margin="10">
+            <Button Content="добавить"
+                    Command="{Binding SaveCommand}"
+                    MaxWidth="250"/>
+            <Button Content="отмена"
+                    Command="{Binding CancelCommand}"
+                    MaxWidth="250"/>
+            <Button Content="изменить"
+                    Command="{Binding SaveCommand}"
+                    MaxWidth="250"/>
+        </Grid>
+
     </Grid>
 </UserControl>

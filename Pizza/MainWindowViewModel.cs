@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Pizza.Models;
 using Pizza.Services;
 using Pizza.ViewModels;
@@ -16,11 +17,13 @@ namespace Pizza
         private OrderPerpViewModel _orderPrepViewModel;
         private OrderViewModer _orderViewModel;
 
+        ICustomerRepository _customerRepository = new CustomerRepository();
+
         public MainWindowViewModel()
         {
             NavigationCommand = new RelayCommand<string>(OnNavigation);
-            _customerListViewModel = new CustomerListViewModel(new CustomerRepository()) ;
-            _addEditCustomerVewModel = new AddEditCustomerViewModel() ; 
+            _customerListViewModel = new CustomerListViewModel(_customerRepository) ;
+            _addEditCustomerVewModel = new AddEditCustomerViewModel(_customerRepository) ; 
 
             _customerListViewModel.AddCustomerRequested +=NavigationToAddCustomer;
             _customerListViewModel.EditCustomerRequested += NavigationToEditCustomer;
@@ -61,6 +64,7 @@ namespace Pizza
             _addEditCustomerVewModel.IsEditeMode = false;
             _addEditCustomerVewModel.SetCustomer(customer);
             CurrentViewModel = _customerListViewModel;
+            
         }
 
         //окно для оформления заказа

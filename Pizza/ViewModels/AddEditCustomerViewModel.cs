@@ -11,9 +11,9 @@ namespace Pizza.ViewModels
     public class AddEditCustomerViewModel :BindableBase
     {
         private ICustomerRepository _repository;
-        public AddEditCustomerViewModel()
+        public AddEditCustomerViewModel(ICustomerRepository repo)
         {
-            _repository = new CustomerRepository();
+            _repository = repo;   
             SaveCommand = new RelayCommand(OnSave); 
             CancelCommand = new RelayCommand(OnCancel);
         }
