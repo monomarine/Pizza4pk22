@@ -8,14 +8,14 @@ using Pizza.Services;
 
 namespace Pizza.ViewModels
 {
-    class AddEditCustomerViewModel :BindableBase
+    public class AddEditCustomerViewModel :BindableBase
     {
         private ICustomerRepository _repository;
         public AddEditCustomerViewModel()
         {
             _repository = new CustomerRepository();
-            SaveCommand = ????;
-            CancelCommand = new RelayCommand(OnCancel));
+            SaveCommand = new RelayCommand(OnSave); 
+            CancelCommand = new RelayCommand(OnCancel);
         }
         private bool _isEditeMode;
         public bool IsEditeMode
@@ -53,7 +53,7 @@ namespace Pizza.ViewModels
             }
         }
 
-        private void SetCustomer(Customer customer)
+        internal void SetCustomer(Customer customer)
         {
             _editingCustomer = customer;
             if (Customer!= null)
@@ -63,7 +63,7 @@ namespace Pizza.ViewModels
             CopyCustomer(customer, Customer);
         }
 
-        private void OnCancel()
+        internal void OnCancel()
         {
             Done?.Invoke();
         }

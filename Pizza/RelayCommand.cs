@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Pizza
 {
-    internal class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private Action _execute;
         private Func<bool> _canExecute;
@@ -46,7 +46,7 @@ namespace Pizza
         #endregion
     }
 
-    internal class RelayCommand<T> : ICommand
+    public class RelayCommand<T> : ICommand
     {
         private Action<T> _execute;
         private Func<T, bool> _canExecute;

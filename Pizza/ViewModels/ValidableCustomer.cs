@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pizza.ViewModels
 {
-    internal class ValidableCustomer : ValidableBindableBase
+    public  class ValidableCustomer : ValidableBindableBase
     {
         private Guid _id;
         public Guid Id { get => _id; set => SetProperty(ref _id, value); }

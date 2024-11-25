@@ -17,11 +17,11 @@ namespace Pizza
     /// </summary>
     public partial class MainWindow : Window
     {
-        PizzaDbkozlovtsevContext cont = new PizzaDbkozlovtsevContext();
+
         public MainWindow()
         {
             InitializeComponent();
-            MessageBox.Show(cont.Database.CanConnect().ToString());
+
         }
     }
 }
