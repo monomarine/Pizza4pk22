@@ -17,7 +17,7 @@ namespace Pizza
         private OrderPerpViewModel _orderPrepViewModel;
         private OrderViewModer _orderViewModel;
 
-        ICustomerRepository _customerRepository = new CustomerRepository();
+        static ICustomerRepository _customerRepository = new CustomerRepository();
 
         public MainWindowViewModel()
         {
@@ -55,7 +55,8 @@ namespace Pizza
         {
             _addEditCustomerVewModel.IsEditeMode = true; 
             _addEditCustomerVewModel.SetCustomer(customer);
-            CurrentViewModel = _customerListViewModel;
+            CurrentViewModel = _addEditCustomerVewModel;
+
         }
 
         //открывать окно для добавления клиента
@@ -63,7 +64,7 @@ namespace Pizza
         {
             _addEditCustomerVewModel.IsEditeMode = false;
             _addEditCustomerVewModel.SetCustomer(customer);
-            CurrentViewModel = _customerListViewModel;
+            CurrentViewModel = _addEditCustomerVewModel;
             
         }
 
