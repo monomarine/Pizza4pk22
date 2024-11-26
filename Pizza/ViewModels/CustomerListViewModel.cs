@@ -71,7 +71,7 @@ namespace Pizza.ViewModels
          public RelayCommand ClearSearchInput {  get; private set; }
         
          public event Action<Customer> PlaceOrderRequested = delegate { };
-         public event Action<Customer> AddCustomerRequested = delegate { };  
+         public event Action AddCustomerRequested = delegate { };
          public event Action<Customer> EditCustomerRequested = delegate { }; 
         
          private void OnPlaceOrder(Customer customer)
@@ -81,8 +81,8 @@ namespace Pizza.ViewModels
         
          private void OnAddCustomer()
          {
-             AddCustomerRequested(new Customer { Id = new Guid() });
-         }
+            AddCustomerRequested?.Invoke();
+        }
         
          private void OnEditCustomer(Customer customer)
          {

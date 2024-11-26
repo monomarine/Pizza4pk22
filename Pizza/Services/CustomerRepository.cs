@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Pizza.Services
 {
-    internal class CustomerRepository : ICustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly PizzaDbkozlovtsevContext _context = new PizzaDbkozlovtsevContext();
 

@@ -20,15 +20,13 @@ namespace Pizza.Converters
         #region IValieConverter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            bool boolValue;
-            bool result = bool.TryParse(value.ToString(), out boolValue);
+            bool bVal;
+            bool result = bool.TryParse(value.ToString(), out bVal);
             if (!result) return value;
-
-            if (boolValue && Negate) return FalseVisibility;
-            if (boolValue && !Negate) return Visibility.Visible;
-            if (!boolValue && Negate) return Visibility.Visible;
-            if (!boolValue && !Negate) return FalseVisibility;
-
+            if (bVal && !Negate) return Visibility.Visible;
+            if (bVal && Negate) return FalseVisibility;
+            if (!bVal && Negate) return Visibility.Visible;
+            if (!bVal && !Negate) return FalseVisibility;
             else return Visibility.Visible;
         }
 

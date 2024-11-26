@@ -7,6 +7,7 @@ using System.Windows;
 using Pizza.Models;
 using Pizza.Services;
 using Pizza.ViewModels;
+using Unity;
 
 namespace Pizza
 {
@@ -17,17 +18,20 @@ namespace Pizza
         private OrderPerpViewModel _orderPrepViewModel;
         private OrderViewModer _orderViewModel;
 
-        static ICustomerRepository _customerRepository = new CustomerRepository();
+        private ICustomerRepository _customerRepository = new CustomerRepository();
 
         public MainWindowViewModel()
         {
             NavigationCommand = new RelayCommand<string>(OnNavigation);
-            _customerListViewModel = new CustomerListViewModel(_customerRepository) ;
-            _addEditCustomerVewModel = new AddEditCustomerViewModel(_customerRepository) ; 
+            //_customerListViewModel = new CustomerListViewModel(new CustomerRepository()) ;
+            //_addEditCustomerVewModel = new AddEditCustomerViewModel(new CustomerRepository()) ; 
+            _customerListViewModel = RepoContainer.Container.Resolve<CustomerListViewModel>();  
+            _addEditCustomerVewModel = RepoContainer.Container.Resolve<AddEditCustomerViewModel>();
 
             _customerListViewModel.AddCustomerRequested +=NavigationToAddCustomer;
             _customerListViewModel.EditCustomerRequested += NavigationToEditCustomer;
             _customerListViewModel.PlaceOrderRequested += NavigateToOrder;
+           
         }
         private BindableBase _currentViewModel;
         public BindableBase CurrentViewModel
@@ -50,6 +54,7 @@ namespace Pizza
                        CurrentViewModel = _customerListViewModel; break;
             }
         }
+        
         //открывать окно для редактирования клиента
         private void NavigationToEditCustomer(Customer customer)
         {
@@ -60,10 +65,14 @@ namespace Pizza
         }
 
         //открывать окно для добавления клиента
-        private void NavigationToAddCustomer(Customer customer)
+        //private void NavigationToAddCustomer(Customer cust)----------------------------
+        private void NavigationToAddCustomer()
         {
             _addEditCustomerVewModel.IsEditeMode = false;
-            _addEditCustomerVewModel.SetCustomer(customer);
+            _addEditCustomerVewModel.SetCustomer(new Customer
+            {
+                Id = Guid.NewGuid(),
+            });
             CurrentViewModel = _addEditCustomerVewModel;
             
         }
